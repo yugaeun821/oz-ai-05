@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>암호화폐 가격 변동 추적기</title>
+
+    <link rel="stylesheet" href="cryptocurrency_style.css">
+</head>
+<body>
+    <main class="app">
+        <header class="app-header">
+            <p class="eyebrow">CRYPTO MARKET</p>
+            <h1>암호화폐 가격 변동 추적기</h1>
+            <p class="description">
+                Binance API를 이용해 USDT 마켓의 가격 변동을 확인합니다.
+            </p>
+        </header>
+
+        <section class="summary" aria-label="시장 정보 요약">
+            <div class="summary-card">
+                <span>조회 항목</span>
+                <strong id="coinCount">0개</strong>
+            </div>
+
+            <div class="summary-card">
+                <span>마지막 업데이트</span>
+                <strong id="updatedAt">대기 중</strong>
+            </div>
+
+            <div class="summary-card">
+                <span>관심 항목</span>
+                <strong id="favoriteCount">0개</strong>
+            </div>
+        </section>
+
+        <section class="controls" aria-label="암호화폐 검색 및 탭">
+            <div class="tabs" role="tablist">
+                <button
+                    type="button"
+                    id="allTab"
+                    class="tab-button active"
+                    data-tab="all"
+                    role="tab"
+                    aria-selected="true"
+                >
+                    전체보기
+                </button>
+
+                <button
+                    type="button"
+                    id="favoriteTab"
+                    class="tab-button"
+                    data-tab="favorite"
+                    role="tab"
+                    aria-selected="false"
+                >
+                    관심항목
+                </button>
+            </div>
+
+            <label class="search-box">
+                <span class="sr-only">암호화폐 심볼 검색</span>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="심볼 검색 (예: BTC, ETH)"
+                    autocomplete="off"
+                >
+            </label>
+        </section>
+
+        <section class="market-panel">
+            <div id="statusMessage" class="status-message">
+                암호화폐 데이터를 불러오는 중입니다.
+            </div>
+
+            <div class="table-wrapper">
+                <table id="cryptoTable" class="crypto-table" hidden>
+                    <thead>
+                        <tr>
+                            <th scope="col">관심</th>
+                            <th scope="col">심볼</th>
+                            <th scope="col">현재가</th>
+                            <th scope="col">24시간 변동률</th>
+                            <th scope="col">최고가</th>
+                            <th scope="col">최저가</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="cryptoList"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="cryptocurrency.js"></script>
+</body>
+</html>
